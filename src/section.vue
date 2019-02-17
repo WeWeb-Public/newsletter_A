@@ -3,9 +3,7 @@
         <!-- wwManager:start -->
         <wwSectionEditMenu v-bind:sectionCtrl="sectionCtrl"></wwSectionEditMenu>
         <!-- wwManager:end -->
-
         <wwObject class="background" v-bind:ww-object="section.data.background" ww-category="background"></wwObject>
-
         <div>
             <!--TOP WWOBJS-->
             <div class="top-ww-objs">
@@ -15,7 +13,6 @@
                     </div>
                 </wwLayoutColumn>
             </div>
-
             <div class="container section-padding">
                 <!--TITLES-->
                 <h1>
@@ -24,7 +21,6 @@
                 <h2 class="subtitle">
                     <wwObject v-bind:ww-object="section.data.subtitle"></wwObject>
                 </h2>
-
                 <!--NEWSLETTER-->
                 <div class="row">
                     <div class="block">
@@ -32,7 +28,6 @@
                     </div>
                 </div>
             </div>
-
             <!--BOTTOM WWOBJS-->
             <div class="bottom-ww-objs">
                 <wwLayoutColumn tag='div' ww-default="ww-row" :ww-list="section.data.bottomWwObjs" class="wwobjects-wrapper" @ww-add="add(section.data.bottomWwObjs, $event)" @ww-remove="remove(section.data.bottomWwObjs, $event)">
@@ -41,14 +36,13 @@
                     </div>
                 </wwLayoutColumn>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "newsletter_A",
+    name: "__COMPONENT_NAME__",
     props: {
         sectionCtrl: Object
     },
@@ -66,7 +60,6 @@ export default {
     methods: {
         init() {
             this.section.data = this.section.data || {} 
-
             this.section.data.topWwObjs = this.section.data.topWwObjs || [];
             this.section.data.bottomWwObjs = this.section.data.bottomWwObjs || [];
 
@@ -95,6 +88,7 @@ export default {
             }
             this.sectionCtrl.update(this.section);
         },
+        // wwManager:start
         add(array, options) {
             array.splice(options.index, 0, options.wwObject);
             this.sectionCtrl.update(this.section);
@@ -103,6 +97,7 @@ export default {
             array.splice(options.index, 1);
             this.sectionCtrl.update(this.section);
         }
+        // wwManager:end
     }
 };
 </script>
@@ -175,9 +170,7 @@ export default {
     }
 }
 
-@media (min-width: 992px) {}
-
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
     .newsletter_A .block {
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
